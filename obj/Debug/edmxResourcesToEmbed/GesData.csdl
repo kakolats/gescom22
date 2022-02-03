@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="GesData" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="GesDataContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="User" EntityType="GesData.User" />
+    <EntitySet Name="Produit" EntityType="GesData.Produit" />
+    <EntitySet Name="Categorie" EntityType="GesData.Categorie" />
+    <EntitySet Name="DetailCommande" EntityType="GesData.DetailsCommande" />
+    <EntitySet Name="Commande" EntityType="GesData.Commande" />
+    <EntitySet Name="Paiement" EntityType="GesData.Paiement" />
+    <EntitySet Name="Livraison" EntityType="GesData.Livraison" />
+    <AssociationSet Name="ProduitCategorie" Association="GesData.ProduitCategorie">
+      <End Role="Produit" EntitySet="Produit" />
+      <End Role="Categorie" EntitySet="Categorie" />
+    </AssociationSet>
+    <AssociationSet Name="ProduitDetailsCommande" Association="GesData.ProduitDetailsCommande">
+      <End Role="Produit" EntitySet="Produit" />
+      <End Role="DetailsCommande" EntitySet="DetailCommande" />
+    </AssociationSet>
+    <AssociationSet Name="LivreurLivraison" Association="GesData.LivreurLivraison">
+      <End Role="Livreur" EntitySet="User" />
+      <End Role="Livraison" EntitySet="Livraison" />
+    </AssociationSet>
+    <AssociationSet Name="ClientCommande" Association="GesData.ClientCommande">
+      <End Role="Client" EntitySet="User" />
+      <End Role="Commande" EntitySet="Commande" />
+    </AssociationSet>
+    <AssociationSet Name="CommandeDetailsCommande" Association="GesData.CommandeDetailsCommande">
+      <End Role="Commande" EntitySet="Commande" />
+      <End Role="DetailsCommande" EntitySet="DetailCommande" />
+    </AssociationSet>
+    <AssociationSet Name="CommandeLivraison" Association="GesData.CommandeLivraison">
+      <End Role="Commande" EntitySet="Commande" />
+      <End Role="Livraison" EntitySet="Livraison" />
+    </AssociationSet>
+    <AssociationSet Name="PaiementCommande" Association="GesData.PaiementCommande">
+      <End Role="Paiement" EntitySet="Paiement" />
+      <End Role="Commande" EntitySet="Commande" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="NomComplet" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Role" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Telephone" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Client" BaseType="GesData.User">
+    <Property Name="Adresse" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Solde" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Commandes" Relationship="GesData.ClientCommande" FromRole="Client" ToRole="Commande" />
+  </EntityType>
+  <EntityType Name="Livreur" BaseType="GesData.User">
+    <Property Name="Matricule" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Livraisons" Relationship="GesData.LivreurLivraison" FromRole="Livreur" ToRole="Livraison" />
+  </EntityType>
+  <EntityType Name="Produit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Libelle" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Prix" Type="Double" Nullable="false" />
+    <Property Name="Stock" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Categorie" Relationship="GesData.ProduitCategorie" FromRole="Produit" ToRole="Categorie" />
+    <Property Name="Image" Type="Binary" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categorie">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Libelle" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Produits" Relationship="GesData.ProduitCategorie" FromRole="Categorie" ToRole="Produit" />
+  </EntityType>
+  <EntityType Name="DetailsCommande">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Quantite" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Produit" Relationship="GesData.ProduitDetailsCommande" FromRole="DetailsCommande" ToRole="Produit" />
+    <NavigationProperty Name="Commande" Relationship="GesData.CommandeDetailsCommande" FromRole="DetailsCommande" ToRole="Commande" />
+  </EntityType>
+  <EntityType Name="Commande">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Montant" Type="Double" Nullable="false" />
+    <Property Name="AdresseLivraison" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Etat" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Client" Relationship="GesData.ClientCommande" FromRole="Commande" ToRole="Client" />
+    <NavigationProperty Name="DetailsCommandes" Relationship="GesData.CommandeDetailsCommande" FromRole="Commande" ToRole="DetailsCommande" />
+    <NavigationProperty Name="Livraison" Relationship="GesData.CommandeLivraison" FromRole="Commande" ToRole="Livraison" />
+    <NavigationProperty Name="Paiement" Relationship="GesData.PaiementCommande" FromRole="Commande" ToRole="Paiement" />
+  </EntityType>
+  <EntityType Name="Paiement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Date" Type="DateTime" Nullable="true" Precision="3" />
+    <Property Name="Montant" Type="Double" Nullable="true" />
+    <NavigationProperty Name="Commande" Relationship="GesData.PaiementCommande" FromRole="Paiement" ToRole="Commande" />
+  </EntityType>
+  <EntityType Name="Livraison">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="true" Precision="3" />
+    <Property Name="Etat" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Livreur" Relationship="GesData.LivreurLivraison" FromRole="Livraison" ToRole="Livreur" />
+    <NavigationProperty Name="Commande" Relationship="GesData.CommandeLivraison" FromRole="Livraison" ToRole="Commande" />
+  </EntityType>
+  <Association Name="ProduitCategorie">
+    <End Type="GesData.Produit" Role="Produit" Multiplicity="*" />
+    <End Type="GesData.Categorie" Role="Categorie" Multiplicity="1" />
+  </Association>
+  <Association Name="ProduitDetailsCommande">
+    <End Type="GesData.Produit" Role="Produit" Multiplicity="1" />
+    <End Type="GesData.DetailsCommande" Role="DetailsCommande" Multiplicity="*" />
+  </Association>
+  <Association Name="LivreurLivraison">
+    <End Type="GesData.Livreur" Role="Livreur" Multiplicity="1" />
+    <End Type="GesData.Livraison" Role="Livraison" Multiplicity="*" />
+  </Association>
+  <Association Name="ClientCommande">
+    <End Type="GesData.Client" Role="Client" Multiplicity="1" />
+    <End Type="GesData.Commande" Role="Commande" Multiplicity="*" />
+  </Association>
+  <Association Name="CommandeDetailsCommande">
+    <End Type="GesData.Commande" Role="Commande" Multiplicity="1" />
+    <End Type="GesData.DetailsCommande" Role="DetailsCommande" Multiplicity="*" />
+  </Association>
+  <Association Name="CommandeLivraison">
+    <End Type="GesData.Commande" Role="Commande" Multiplicity="1" />
+    <End Type="GesData.Livraison" Role="Livraison" Multiplicity="0..1" />
+  </Association>
+  <Association Name="PaiementCommande">
+    <End Type="GesData.Paiement" Role="Paiement" Multiplicity="0..1" />
+    <End Type="GesData.Commande" Role="Commande" Multiplicity="1" />
+  </Association>
+</Schema>

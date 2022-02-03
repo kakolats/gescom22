@@ -1,0 +1,101 @@
+﻿using gescom22.dto;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace gescom22.Services
+{
+    class Service : IService
+    {
+        private GesDataContainer data = new GesDataContainer();
+
+        public int addClient(Client client)
+        {
+            data.User.Add(client);
+            return data.SaveChanges();
+        }
+
+        public void addCommande(Commande cmde, List<DetailsCommandeDTO> details)
+        {
+            data.Commande.Add(cmde);
+            foreach(DetailsCommandeDTO detail in details)
+            {
+                DetailsCommande de = new DetailsCommande()
+                {
+                    Quantite=detail.Quantite,
+                    Produit=findProduitById(detail.Produit.Id),
+                    Commande=cmde
+                };
+                data.DetailCommande.Add(de);
+            }
+            data.SaveChanges();
+
+        }
+
+        public int addProduit(Produit produit)
+        {
+            data.Produit.Add(produit);
+
+            try
+            {
+                return data.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+            {
+                Exception raise = dbEx;
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        string message = string.Format("{0}:{1}",
+                            validationErrors.Entry.Entity.ToString(),
+                            validationError.ErrorMessage);
+                        // raise a new exception nesting
+                        // the current instance as InnerException
+                        raise = new InvalidOperationException(message, raise);
+                    }
+                }
+                throw raise;
+            }
+        }
+
+        public int deleteProduit(int  idProduit)
+        {
+            Produit prodDel = data.Produit.Where(prod => prod.Id == idProduit).FirstOrDefault();
+            data.Produit.Remove(prodDel);
+            return data.SaveChanges();
+        }
+
+        public Client findClientById(int id)
+        {
+            return (Client)data.User.Where(u => u.Id == id).FirstOrDefault();
+        }
+
+        public Produit findProduitById(int id)
+        {
+            return data.Produit.Where(p => p.Id == id).FirstOrDefault();
+        }
+
+        public User findUserByLoginPassword(string login, string password)
+        {
+            return data.User.Where(s=>s.Login==login & s.Password==password).FirstOrDefault();
+        }
+
+        public List<Categorie> showAllCategories()
+        {
+            return data.Categorie.ToList();
+        }
+
+        public List<Produit> showAllProduit()
+        {
+            return data.Produit.ToList();
+        }
+
+        public int updateProduit(Produit produit)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

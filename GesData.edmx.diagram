@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="19e072704f7742ed80ba9bce70b3e61f" Name="Diagram1" >
+        <EntityTypeShape EntityType="GesData.User" Width="1.5" PointX="2.625" PointY="1.875" />
+        <EntityTypeShape EntityType="GesData.Client" Width="1.5" PointX="2.5" PointY="5.75" />
+        <EntityTypeShape EntityType="GesData.Livreur" Width="1.5" PointX="5.625" PointY="2" />
+        <InheritanceConnector EntityType="GesData.Client" />
+        <InheritanceConnector EntityType="GesData.Livreur" />
+        <EntityTypeShape EntityType="GesData.Produit" Width="1.5" PointX="7" PointY="8.25" />
+        <EntityTypeShape EntityType="GesData.Categorie" Width="1.5" PointX="2.875" PointY="8.75" />
+        <EntityTypeShape EntityType="GesData.DetailsCommande" Width="1.5" PointX="10.5" PointY="6.875" />
+        <EntityTypeShape EntityType="GesData.Commande" Width="1.5" PointX="8.125" PointY="5.125" />
+        <EntityTypeShape EntityType="GesData.Paiement" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="GesData.Livraison" Width="1.5" PointX="9.375" PointY="1.75" />
+        <AssociationConnector Association="GesData.ProduitCategorie" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="GesData.ProduitDetailsCommande" />
+        <AssociationConnector Association="GesData.LivreurLivraison" />
+        <AssociationConnector Association="GesData.ClientCommande" />
+        <AssociationConnector Association="GesData.CommandeDetailsCommande" />
+        <AssociationConnector Association="GesData.CommandeLivraison" />
+        <AssociationConnector Association="GesData.PaiementCommande" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

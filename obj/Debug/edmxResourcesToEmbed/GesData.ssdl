@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GesData.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="GesDataStoreContainer">
+    <EntitySet Name="User" EntityType="GesData.Store.User" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Produit" EntityType="GesData.Store.Produit" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Categorie" EntityType="GesData.Store.Categorie" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DetailCommande" EntityType="GesData.Store.DetailCommande" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Commande" EntityType="GesData.Store.Commande" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Paiement" EntityType="GesData.Store.Paiement" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Livraison" EntityType="GesData.Store.Livraison" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User_Livreur" EntityType="GesData.Store.User_Livreur" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User_Client" EntityType="GesData.Store.User_Client" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ProduitCategorie" Association="GesData.Store.ProduitCategorie">
+      <End Role="Produit" EntitySet="Produit" />
+      <End Role="Categorie" EntitySet="Categorie" />
+    </AssociationSet>
+    <AssociationSet Name="ProduitDetailsCommande" Association="GesData.Store.ProduitDetailsCommande">
+      <End Role="Produit" EntitySet="Produit" />
+      <End Role="DetailsCommande" EntitySet="DetailCommande" />
+    </AssociationSet>
+    <AssociationSet Name="LivreurLivraison" Association="GesData.Store.LivreurLivraison">
+      <End Role="Livreur" EntitySet="User_Livreur" />
+      <End Role="Livraison" EntitySet="Livraison" />
+    </AssociationSet>
+    <AssociationSet Name="ClientCommande" Association="GesData.Store.ClientCommande">
+      <End Role="Client" EntitySet="User_Client" />
+      <End Role="Commande" EntitySet="Commande" />
+    </AssociationSet>
+    <AssociationSet Name="CommandeDetailsCommande" Association="GesData.Store.CommandeDetailsCommande">
+      <End Role="Commande" EntitySet="Commande" />
+      <End Role="DetailsCommande" EntitySet="DetailCommande" />
+    </AssociationSet>
+    <AssociationSet Name="CommandeLivraison" Association="GesData.Store.CommandeLivraison">
+      <End Role="Commande" EntitySet="Commande" />
+      <End Role="Livraison" EntitySet="Livraison" />
+    </AssociationSet>
+    <AssociationSet Name="PaiementCommande" Association="GesData.Store.PaiementCommande">
+      <End Role="Paiement" EntitySet="Paiement" />
+      <End Role="Commande" EntitySet="Commande" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Livreur_inherits_User" Association="GesData.Store.FK_Livreur_inherits_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Livreur" EntitySet="User_Livreur" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_inherits_User" Association="GesData.Store.FK_Client_inherits_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Client" EntitySet="User_Client" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NomComplet" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Role" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Telephone" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Produit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Libelle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Prix" Type="float" Nullable="false" />
+    <Property Name="Stock" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Image" Type="varbinary(max)" Nullable="false" />
+    <Property Name="Categorie_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categorie">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Libelle" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetailCommande">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Quantite" Type="int" Nullable="false" />
+    <Property Name="Produit_Id" Type="int" Nullable="false" />
+    <Property Name="Commande_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Commande">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Montant" Type="float" Nullable="false" />
+    <Property Name="AdresseLivraison" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Etat" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Client_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Paiement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Date" Type="datetime" Nullable="true" />
+    <Property Name="Montant" Type="float" Nullable="true" />
+    <Property Name="Commande_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Livraison">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="true" />
+    <Property Name="Etat" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Livreur_Id" Type="int" Nullable="false" />
+    <Property Name="Commande_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User_Livreur">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Matricule" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User_Client">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Adresse" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Solde" Type="float" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ProduitCategorie">
+    <End Role="Produit" Type="GesData.Store.Produit" Multiplicity="*" />
+    <End Role="Categorie" Type="GesData.Store.Categorie" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Categorie">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Produit">
+        <PropertyRef Name="Categorie_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProduitDetailsCommande">
+    <End Role="Produit" Type="GesData.Store.Produit" Multiplicity="1" />
+    <End Role="DetailsCommande" Type="GesData.Store.DetailCommande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produit">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetailsCommande">
+        <PropertyRef Name="Produit_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LivreurLivraison">
+    <End Role="Livreur" Type="GesData.Store.User_Livreur" Multiplicity="1" />
+    <End Role="Livraison" Type="GesData.Store.Livraison" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Livreur">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Livraison">
+        <PropertyRef Name="Livreur_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClientCommande">
+    <End Role="Client" Type="GesData.Store.User_Client" Multiplicity="1" />
+    <End Role="Commande" Type="GesData.Store.Commande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Commande">
+        <PropertyRef Name="Client_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CommandeDetailsCommande">
+    <End Role="Commande" Type="GesData.Store.Commande" Multiplicity="1" />
+    <End Role="DetailsCommande" Type="GesData.Store.DetailCommande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Commande">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetailsCommande">
+        <PropertyRef Name="Commande_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CommandeLivraison">
+    <End Role="Commande" Type="GesData.Store.Commande" Multiplicity="1" />
+    <End Role="Livraison" Type="GesData.Store.Livraison" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Commande">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Livraison">
+        <PropertyRef Name="Commande_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PaiementCommande">
+    <End Role="Paiement" Type="GesData.Store.Paiement" Multiplicity="*" />
+    <End Role="Commande" Type="GesData.Store.Commande" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Commande">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Paiement">
+        <PropertyRef Name="Commande_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Livreur_inherits_User">
+    <End Role="User" Type="GesData.Store.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Livreur" Type="GesData.Store.User_Livreur" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Livreur">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_inherits_User">
+    <End Role="User" Type="GesData.Store.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Client" Type="GesData.Store.User_Client" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

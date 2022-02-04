@@ -23,3 +23,5 @@ C:\Users\HP\Documents\TROISIEME ANNEE\C#\Gescom\gescom22\obj\Debug\gescom22.Cart
 C:\Users\HP\Documents\TROISIEME ANNEE\C#\Gescom\gescom22\obj\Debug\gescom22.FrmCart.resources
 C:\Users\HP\Documents\TROISIEME ANNEE\C#\Gescom\gescom22\obj\Debug\gescom22.FrmCommandeValidation.resources
 C:\Users\HP\Documents\TROISIEME ANNEE\C#\Gescom\gescom22\obj\Debug\gescom22.FrmRpMenu.resources
+C:\Users\HP\Documents\TROISIEME ANNEE\C#\Gescom\gescom22\obj\Debug\gescom22.FrmGestionCommandes.resources
+C:\Users\HP\Documents\TROISIEME ANNEE\C#\Gescom\gescom22\obj\Debug\gescom22.PlanifierLivraison.resources

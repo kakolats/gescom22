@@ -35,6 +35,22 @@ namespace gescom22.Services
 
         }
 
+        public int addLivraison(Livraison livraison,int idCom,int idLiv)
+        {
+            Livreur liv = (Livreur)data.User.Find(idLiv);
+            Commande com = data.Commande.Find(idCom);
+            Livraison livr = new Livraison()
+            {
+                Date=livraison.Date,
+                Etat="EN COURS",
+                Livreur=liv,
+                Commande=com
+            };
+            
+            data.Livraison.Add(livr);
+            return data.SaveChanges();
+        }
+
         public int addProduit(Produit produit)
         {
             data.Produit.Add(produit);
@@ -69,9 +85,14 @@ namespace gescom22.Services
             return data.SaveChanges();
         }
 
-        public List<Commande> findAllCommandesDemandes()
+        public List<Commande> findAllCommandesByEtat(string etat)
         {
-            return data.Commande.Where(c => c.Etat == "DEMANDE").ToList();
+            return data.Commande.Where(c => c.Etat == etat).ToList();
+        }
+
+        public List<User> findAllLivreurs()
+        {
+            return data.User.Where(r => r.Role == "ROLE_LIVREUR").ToList();
         }
 
         public Client findClientById(int id)

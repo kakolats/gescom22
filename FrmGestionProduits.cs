@@ -117,20 +117,7 @@ namespace gescom22
             FormUtils.desactiveFields(btnAdd, btnUp, btnDel, Action.ADD);
         }
 
-        private void dtgvProduits_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.RowIndex <= dtgvProduits.Rows.Count - 1)
-            {
-                FormUtils.desactiveFields(btnAdd, btnUp, btnDel, Action.UPDEL);
-                DataGridViewRow row = dtgvProduits.Rows[e.RowIndex];
-                row.Selected = true;
-                prodSelected = (Produit)row.DataBoundItem;
-                txtbLibelle.Text= row.Cells[1].Value.ToString();
-                txtbPrix.Text= row.Cells[2].Value.ToString();
-                txtbStock.Text= row.Cells[3].Value.ToString();
-                btnUpFieldsState();
-            }
-        }
+        
 
         private void btnUp_Click(object sender, EventArgs e)
         {
@@ -158,6 +145,21 @@ namespace gescom22
         {
             FormUtils.activeTextBoxes(gBoxProductData, true);
             btnUploadPic.Enabled = true;
+        }
+
+        private void dtgvProduits_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex <= dtgvProduits.Rows.Count - 1)
+            {
+                FormUtils.desactiveFields(btnAdd, btnUp, btnDel, Action.UPDEL);
+                DataGridViewRow row = dtgvProduits.Rows[e.RowIndex];
+                row.Selected = true;
+                prodSelected = (Produit)row.DataBoundItem;
+                txtbLibelle.Text = row.Cells[1].Value.ToString();
+                txtbPrix.Text = row.Cells[2].Value.ToString();
+                txtbStock.Text = row.Cells[3].Value.ToString();
+                btnUpFieldsState();
+            }
         }
     }
 }

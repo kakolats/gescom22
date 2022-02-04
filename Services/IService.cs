@@ -20,7 +20,7 @@ namespace gescom22.Services
 
         //Gerer Commande
         void addCommande(Commande cmde, List<DetailsCommandeDTO> details);
-        List<Commande> findAllCommandesDemandes();
+        List<Commande> findAllCommandesByEtat(string etat);
 
         //Gerer Details Commande
         List<DetailsCommande> showDetailsCommandeByIdCommande(int idCom);
@@ -34,5 +34,11 @@ namespace gescom22.Services
         User findUserByLoginPassword(string login, string password);
         int addClient(Client client);
         Client findClientById(int id);
+        List<User> findAllLivreurs();
+
+
+        //Gerer Livraison
+        int addLivraison(Livraison livraison,int idCom,int idLiv);
+        List<Livraison> findLivraisonsByLivreurAndEtat(int idUser,string etat);
     }
 }

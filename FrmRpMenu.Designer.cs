@@ -66,6 +66,7 @@ namespace gescom22
             this.lblGererCommande.Size = new System.Drawing.Size(134, 17);
             this.lblGererCommande.TabIndex = 5;
             this.lblGererCommande.Text = "Gerer Commande";
+            this.lblGererCommande.Click += new System.EventHandler(this.lblGererCommande_Click);
             // 
             // lblGererProduit
             // 
@@ -77,6 +78,7 @@ namespace gescom22
             this.lblGererProduit.Size = new System.Drawing.Size(107, 17);
             this.lblGererProduit.TabIndex = 4;
             this.lblGererProduit.Text = "Gerer Produit";
+            this.lblGererProduit.Click += new System.EventHandler(this.lblGererProduit_Click);
             // 
             // lblDeconnexion
             // 
@@ -151,8 +153,12 @@ namespace gescom22
             this.ClientSize = new System.Drawing.Size(1046, 574);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.IsMdiContainer = true;
             this.Name = "FrmRpMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmRpMenu";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmRpMenu_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

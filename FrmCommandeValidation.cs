@@ -26,10 +26,10 @@ namespace gescom22
             loadTableViewCommandes();
         }
 
-        private void loadTableViewCommandes()
+        private void loadTableViewCommandes(string etat="DEMANDE")
         {
             dtgvCommandes.AutoGenerateColumns = false;
-            dtgvCommandes.DataSource = service.findAllCommandesDemandes();
+            dtgvCommandes.DataSource = service.findAllCommandesByEtat(etat);
             
         }
 
@@ -135,6 +135,18 @@ namespace gescom22
                     reboot();
                 }
             }
+        }
+
+        private void cboFiltre_TextChanged(object sender, EventArgs e)
+        {
+            btnValidation.Enabled = false;
+            btnAttente.Enabled = false;
+            lblDsipo.Text = "0";
+            lblValide.Text = "Commande valide";
+            lblValide.Visible = false;
+            loadTableViewDetails(0);
+            cmdeSelected = null;
+            loadTableViewCommandes("EN ATTENTE");
         }
     }
 }

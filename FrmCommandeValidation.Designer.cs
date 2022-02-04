@@ -30,22 +30,23 @@ namespace gescom22
         private void InitializeComponent()
         {
             this.dtgvCommandes = new System.Windows.Forms.DataGridView();
-            this.dtgvDetails = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnValidation = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Statut = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.User = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtgvDetails = new System.Windows.Forms.DataGridView();
             this.Libelle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantite = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnValidation = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.lblDsipo = new System.Windows.Forms.Label();
             this.btnReboot = new System.Windows.Forms.Button();
             this.lblValide = new System.Windows.Forms.Label();
             this.btnAttente = new System.Windows.Forms.Button();
+            this.cboFiltre = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvCommandes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDetails)).BeginInit();
             this.SuspendLayout();
@@ -63,53 +64,6 @@ namespace gescom22
             this.dtgvCommandes.Size = new System.Drawing.Size(492, 300);
             this.dtgvCommandes.TabIndex = 0;
             this.dtgvCommandes.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgvCommandes_CellMouseClick);
-            // 
-            // dtgvDetails
-            // 
-            this.dtgvDetails.AllowUserToDeleteRows = false;
-            this.dtgvDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Libelle,
-            this.Quantite,
-            this.Stock});
-            this.dtgvDetails.Location = new System.Drawing.Point(524, 58);
-            this.dtgvDetails.Name = "dtgvDetails";
-            this.dtgvDetails.ReadOnly = true;
-            this.dtgvDetails.Size = new System.Drawing.Size(367, 300);
-            this.dtgvDetails.TabIndex = 1;
-            this.dtgvDetails.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgvDetails_CellMouseClick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(21, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 22);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Commandes";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(520, 32);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 22);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Details";
-            // 
-            // btnValidation
-            // 
-            this.btnValidation.Enabled = false;
-            this.btnValidation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnValidation.Location = new System.Drawing.Point(710, 479);
-            this.btnValidation.Name = "btnValidation";
-            this.btnValidation.Size = new System.Drawing.Size(80, 40);
-            this.btnValidation.TabIndex = 4;
-            this.btnValidation.Text = "Valider";
-            this.btnValidation.UseVisualStyleBackColor = true;
-            this.btnValidation.Click += new System.EventHandler(this.btnValidation_Click);
             // 
             // ID
             // 
@@ -142,6 +96,21 @@ namespace gescom22
             this.User.ReadOnly = true;
             this.User.Visible = false;
             // 
+            // dtgvDetails
+            // 
+            this.dtgvDetails.AllowUserToDeleteRows = false;
+            this.dtgvDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Libelle,
+            this.Quantite,
+            this.Stock});
+            this.dtgvDetails.Location = new System.Drawing.Point(524, 58);
+            this.dtgvDetails.Name = "dtgvDetails";
+            this.dtgvDetails.ReadOnly = true;
+            this.dtgvDetails.Size = new System.Drawing.Size(367, 300);
+            this.dtgvDetails.TabIndex = 1;
+            this.dtgvDetails.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgvDetails_CellMouseClick);
+            // 
             // Libelle
             // 
             this.Libelle.DataPropertyName = "Produit";
@@ -163,6 +132,38 @@ namespace gescom22
             this.Stock.HeaderText = "Stock";
             this.Stock.Name = "Stock";
             this.Stock.ReadOnly = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(21, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 22);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Commandes";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(520, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 22);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Details";
+            // 
+            // btnValidation
+            // 
+            this.btnValidation.Enabled = false;
+            this.btnValidation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnValidation.Location = new System.Drawing.Point(710, 479);
+            this.btnValidation.Name = "btnValidation";
+            this.btnValidation.Size = new System.Drawing.Size(80, 40);
+            this.btnValidation.TabIndex = 4;
+            this.btnValidation.Text = "Valider";
+            this.btnValidation.UseVisualStyleBackColor = true;
+            this.btnValidation.Click += new System.EventHandler(this.btnValidation_Click);
             // 
             // label3
             // 
@@ -218,11 +219,21 @@ namespace gescom22
             this.btnAttente.UseVisualStyleBackColor = true;
             this.btnAttente.Click += new System.EventHandler(this.btnAttente_Click);
             // 
+            // cboFiltre
+            // 
+            this.cboFiltre.FormattingEnabled = true;
+            this.cboFiltre.Location = new System.Drawing.Point(304, 30);
+            this.cboFiltre.Name = "cboFiltre";
+            this.cboFiltre.Size = new System.Drawing.Size(200, 21);
+            this.cboFiltre.TabIndex = 17;
+            this.cboFiltre.TextChanged += new System.EventHandler(this.cboFiltre_TextChanged);
+            // 
             // FrmCommandeValidation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(903, 623);
+            this.Controls.Add(this.cboFiltre);
             this.Controls.Add(this.btnAttente);
             this.Controls.Add(this.lblValide);
             this.Controls.Add(this.btnReboot);
@@ -235,7 +246,7 @@ namespace gescom22
             this.Controls.Add(this.dtgvCommandes);
             this.Name = "FrmCommandeValidation";
             this.Text = "FrmCommandeValidation";
-            this.Load += new System.EventHandler(this.FrmCommandeValidation_Load);
+            this.Load += new System.EventHandler(this.btnAttente_Click);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvCommandes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDetails)).EndInit();
             this.ResumeLayout(false);
@@ -262,5 +273,6 @@ namespace gescom22
         private System.Windows.Forms.Button btnReboot;
         private System.Windows.Forms.Label lblValide;
         private System.Windows.Forms.Button btnAttente;
+        private System.Windows.Forms.ComboBox cboFiltre;
     }
 }

@@ -16,23 +16,22 @@ namespace gescom22
         {
             /*
             GesDataContainer data = new GesDataContainer();
-            Client client = new Client()
+            Livreur livreur = new Livreur()
             {
-                Adresse = "Medina Rue 31X2",
-                Solde = 0,
-                Login = "client",
+                Matricule="MAT002",
+                Login = "livreur1",
                 Password = "1234",
-                NomComplet = "Gon Freecs",
-                Telephone = "77 777 77 77",
-                Role="ROLE_CLIENT"
+                NomComplet = "Gon Freec",
+                Telephone = "77 999 99 99",
+                Role="ROLE_LIVREUR"
             };
-            data.User.Add(client);
-            data.SaveChanges();
-            */
+            data.User.Add(livreur);
+            data.SaveChanges();*/
+            
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmConnexion());
+            Application.Run(new FrmGestionCommandes());
         }
     }
 }

@@ -253,7 +253,7 @@ namespace gescom22
             this.dtgvProduits.ReadOnly = true;
             this.dtgvProduits.Size = new System.Drawing.Size(510, 491);
             this.dtgvProduits.TabIndex = 0;
-            this.dtgvProduits.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvProduits_CellContentClick);
+            this.dtgvProduits.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgvProduits_CellMouseClick);
             // 
             // ID
             // 
@@ -301,8 +301,11 @@ namespace gescom22
             this.ClientSize = new System.Drawing.Size(920, 551);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.gBoxProductData);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmGestionProduits";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmGestionProduits";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmGestionProduits_Load);
             this.gBoxProductData.ResumeLayout(false);
             this.gBoxProductData.PerformLayout();

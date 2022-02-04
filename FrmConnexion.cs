@@ -40,9 +40,29 @@ namespace gescom22
                 else
                 {
                     //Redirection vers la page d'accueil
+                    switch (user.Role)
+                    {
+                        case "ROLE_CLIENT":
+                            FrmUserMenu frm = new FrmUserMenu(user);
+                            frm.Show();
+                            this.Hide();
+                            break;
+                        case "ROLE_RP":
+                            FrmRpMenu frm1 = new FrmRpMenu(user);
+                            frm1.Show();
+                            this.Hide();
+                            break;
+                        case "ROLE_SECRETAIRE":
+                            break;
+                        case "ROLE_COMPTABLE":
+                            break;
+
+                        
+                    };
+                    /*
                     FrmUserMenu frm = new FrmUserMenu(user);
                     frm.Show();
-                    this.Hide();
+                    this.Hide();*/
 
                 }
 

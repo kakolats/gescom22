@@ -30,7 +30,7 @@ namespace gescom22
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGestionProduits));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gBoxProductData = new System.Windows.Forms.GroupBox();
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnDel = new System.Windows.Forms.Button();
             this.btnUp = new System.Windows.Forms.Button();
@@ -54,36 +54,36 @@ namespace gescom22
             this.Prix = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Categorie = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1.SuspendLayout();
+            this.gBoxProductData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxProduit)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvProduits)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // gBoxProductData
             // 
-            this.groupBox1.Controls.Add(this.btnAnnuler);
-            this.groupBox1.Controls.Add(this.btnDel);
-            this.groupBox1.Controls.Add(this.btnUp);
-            this.groupBox1.Controls.Add(this.btnAdd);
-            this.groupBox1.Controls.Add(this.cboCategorie);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txtbDescription);
-            this.groupBox1.Controls.Add(this.txtbPrix);
-            this.groupBox1.Controls.Add(this.txtbStock);
-            this.groupBox1.Controls.Add(this.txtbLibelle);
-            this.groupBox1.Controls.Add(this.btnUploadPic);
-            this.groupBox1.Controls.Add(this.picBoxProduit);
-            this.groupBox1.Location = new System.Drawing.Point(26, 29);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(317, 510);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Produit";
+            this.gBoxProductData.Controls.Add(this.btnAnnuler);
+            this.gBoxProductData.Controls.Add(this.btnDel);
+            this.gBoxProductData.Controls.Add(this.btnUp);
+            this.gBoxProductData.Controls.Add(this.btnAdd);
+            this.gBoxProductData.Controls.Add(this.cboCategorie);
+            this.gBoxProductData.Controls.Add(this.label6);
+            this.gBoxProductData.Controls.Add(this.label5);
+            this.gBoxProductData.Controls.Add(this.label3);
+            this.gBoxProductData.Controls.Add(this.label2);
+            this.gBoxProductData.Controls.Add(this.label1);
+            this.gBoxProductData.Controls.Add(this.txtbDescription);
+            this.gBoxProductData.Controls.Add(this.txtbPrix);
+            this.gBoxProductData.Controls.Add(this.txtbStock);
+            this.gBoxProductData.Controls.Add(this.txtbLibelle);
+            this.gBoxProductData.Controls.Add(this.btnUploadPic);
+            this.gBoxProductData.Controls.Add(this.picBoxProduit);
+            this.gBoxProductData.Location = new System.Drawing.Point(26, 29);
+            this.gBoxProductData.Name = "gBoxProductData";
+            this.gBoxProductData.Size = new System.Drawing.Size(317, 510);
+            this.gBoxProductData.TabIndex = 0;
+            this.gBoxProductData.TabStop = false;
+            this.gBoxProductData.Text = "Produit";
             // 
             // btnAnnuler
             // 
@@ -300,12 +300,12 @@ namespace gescom22
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(920, 551);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gBoxProductData);
             this.Name = "FrmGestionProduits";
             this.Text = "FrmGestionProduits";
             this.Load += new System.EventHandler(this.FrmGestionProduits_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gBoxProductData.ResumeLayout(false);
+            this.gBoxProductData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxProduit)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvProduits)).EndInit();
@@ -315,7 +315,7 @@ namespace gescom22
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gBoxProductData;
         private System.Windows.Forms.PictureBox picBoxProduit;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnDel;

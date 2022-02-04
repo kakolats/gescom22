@@ -1,6 +1,7 @@
 ﻿using gescom22.dto;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace gescom22.Services
     {
         //Gerer Produit
         int addProduit(Produit produit);
-        int updateProduit(Produit produit);
+        int updateProduit(int idProd,int stockM);
         int deleteProduit(int idProduit);
         List<Produit> showAllProduit();
         Produit findProduitById(int id);
@@ -19,6 +20,11 @@ namespace gescom22.Services
 
         //Gerer Commande
         void addCommande(Commande cmde, List<DetailsCommandeDTO> details);
+        List<Commande> findAllCommandesDemandes();
+
+        //Gerer Details Commande
+        List<DetailsCommande> showDetailsCommandeByIdCommande(int idCom);
+        int updateCommandeStatus(int idCom,string status);
 
         //Gerer Categorie
         List<Categorie> showAllCategories();

@@ -18,7 +18,7 @@ namespace gescom22
         private readonly string IMG_DEFAULT = @"C:\Users\HP\Documents\TROISIEME ANNEE\C#\Gescom\gescom22\Resources\téléchargement.png";
         private Service service = new Service();
         private string fileName;
-
+        private Produit prodSelected;
         public FrmGestionProduits()
         {
             InitializeComponent();
@@ -60,7 +60,8 @@ namespace gescom22
                 || string.IsNullOrEmpty(txtbStock.Text)
                 || string.IsNullOrEmpty(txtbDescription.Text))
             {
-                MessageBox.Show("Champs Obligatoires", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Champs Obligatoires", "Erreur", MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error);
             }
             else
             {
@@ -82,7 +83,8 @@ namespace gescom22
                 Console.WriteLine(cat.Libelle);
                 produit.Categorie = cat;
                 service.addProduit(produit);
-                MessageBox.Show("Produit  Ajouté avec Success", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Produit  Ajouté avec Success", "Information",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 loadDataGridProduits();
                 clearFields();
 
@@ -105,6 +107,8 @@ namespace gescom22
             txtbPrix.Clear();
             txtbStock.Clear();
             loadComboBoxCategorie();
+            prodSelected = null;
+            btnAddFieldsState();
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
@@ -120,15 +124,40 @@ namespace gescom22
                 FormUtils.desactiveFields(btnAdd, btnUp, btnDel, Action.UPDEL);
                 DataGridViewRow row = dtgvProduits.Rows[e.RowIndex];
                 row.Selected = true;
+                prodSelected = (Produit)row.DataBoundItem;
                 txtbLibelle.Text= row.Cells[1].Value.ToString();
                 txtbPrix.Text= row.Cells[2].Value.ToString();
                 txtbStock.Text= row.Cells[3].Value.ToString();
+                btnUpFieldsState();
             }
         }
 
         private void btnUp_Click(object sender, EventArgs e)
         {
+            if (prodSelected != null)
+            {
+                if (txtbStock.Text != "")
+                {
+                    service.updateProduit(prodSelected.Id, int.Parse(txtbStock.Text));
+                    loadDataGridProduits();
+                    btnAddFieldsState();
+                    clearFields();
+                }
+                
+            }
+        }
 
+        private void btnUpFieldsState()
+        {
+            FormUtils.activeTextBoxes(gBoxProductData,false);
+            txtbStock.Enabled = true;
+            btnUploadPic.Enabled = false;
+        }
+
+        private void btnAddFieldsState()
+        {
+            FormUtils.activeTextBoxes(gBoxProductData, true);
+            btnUploadPic.Enabled = true;
         }
     }
 }

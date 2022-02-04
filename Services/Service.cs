@@ -1,6 +1,7 @@
 ﻿using gescom22.dto;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,6 +69,11 @@ namespace gescom22.Services
             return data.SaveChanges();
         }
 
+        public List<Commande> findAllCommandesDemandes()
+        {
+            return data.Commande.Where(c => c.Etat == "DEMANDE").ToList();
+        }
+
         public Client findClientById(int id)
         {
             return (Client)data.User.Where(u => u.Id == id).FirstOrDefault();
@@ -88,14 +94,29 @@ namespace gescom22.Services
             return data.Categorie.ToList();
         }
 
+
         public List<Produit> showAllProduit()
         {
             return data.Produit.ToList();
         }
 
-        public int updateProduit(Produit produit)
+        public List<DetailsCommande> showDetailsCommandeByIdCommande(int idCat)
         {
-            throw new NotImplementedException();
+            return data.DetailCommande.Where(d => d.Commande.Id == idCat).ToList();
+        }
+
+        public int updateCommandeStatus(int idCom,string status)
+        {
+            Commande commande = data.Commande.Find(idCom);
+            commande.Etat = status;
+            return data.SaveChanges();
+        }
+
+        public int updateProduit(int idProd,int stockM)
+        {
+            Produit pro = data.Produit.Find(idProd);
+            pro.Stock = stockM;
+            return data.SaveChanges();
         }
     }
 }

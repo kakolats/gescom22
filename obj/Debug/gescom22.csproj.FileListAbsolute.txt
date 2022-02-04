@@ -21,3 +21,5 @@ C:\Users\HP\Documents\TROISIEME ANNEE\C#\Gescom\gescom22\obj\Debug\gescom22.Ctrl
 C:\Users\HP\Documents\TROISIEME ANNEE\C#\Gescom\gescom22\obj\Debug\gescom22.csproj.AssemblyReference.cache
 C:\Users\HP\Documents\TROISIEME ANNEE\C#\Gescom\gescom22\obj\Debug\gescom22.CartItem.resources
 C:\Users\HP\Documents\TROISIEME ANNEE\C#\Gescom\gescom22\obj\Debug\gescom22.FrmCart.resources
+C:\Users\HP\Documents\TROISIEME ANNEE\C#\Gescom\gescom22\obj\Debug\gescom22.FrmCommandeValidation.resources
+C:\Users\HP\Documents\TROISIEME ANNEE\C#\Gescom\gescom22\obj\Debug\gescom22.FrmRpMenu.resources

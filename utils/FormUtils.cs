@@ -38,6 +38,29 @@ namespace gescom22.utils
                 }
             }
         }
+
+        public static void activeTextBoxes(GroupBox groupBox,Boolean boo)
+        {
+            foreach (var control in groupBox.Controls)
+            {
+                if (control is TextBox)
+                {
+                    ((TextBox)control).Enabled=boo;
+                }
+            }
+        }
+
+        public static Boolean commandeValide(List<DetailsCommande> details)
+        {
+            foreach(DetailsCommande det in details)
+            {
+                if (det.Quantite > det.Produit.Stock)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }
 

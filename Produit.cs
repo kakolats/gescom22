@@ -22,5 +22,10 @@ namespace gescom22
         public byte[] Image { get; set; }
     
         public virtual Categorie Categorie { get; set; }
+
+        public override string ToString()
+        {
+            return Libelle;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using gescom22.Services;
+﻿using gescom22.fabrique;
+using gescom22.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,8 +54,16 @@ namespace gescom22
                             this.Hide();
                             break;
                         case "ROLE_SECRETAIRE":
+                            FrmCommandeValidation frm3 = new FrmCommandeValidation();
+                            frm3.Show();
+                            this.Hide();
                             break;
                         case "ROLE_COMPTABLE":
+                            break;
+                        case "ROLE_LIVREUR":
+                            FrmMenuLivreur frm2 = new FrmMenuLivreur(user);
+                            frm2.Show();
+                            this.Hide();
                             break;
 
                         

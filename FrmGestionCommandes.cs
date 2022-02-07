@@ -1,4 +1,5 @@
-﻿using gescom22.Services;
+﻿using gescom22.fabrique;
+using gescom22.Services;
 using gescom22.utils;
 using System;
 using System.Collections.Generic;
@@ -141,6 +142,8 @@ namespace gescom22
             loadTableViewCommandes(cboFiltre.Text);
            
         }
+
+       
     }
         
 }

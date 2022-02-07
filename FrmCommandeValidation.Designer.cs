@@ -47,6 +47,7 @@ namespace gescom22
             this.lblValide = new System.Windows.Forms.Label();
             this.btnAttente = new System.Windows.Forms.Button();
             this.cboFiltre = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvCommandes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDetails)).BeginInit();
             this.SuspendLayout();
@@ -228,11 +229,23 @@ namespace gescom22
             this.cboFiltre.TabIndex = 17;
             this.cboFiltre.TextChanged += new System.EventHandler(this.cboFiltre_TextChanged);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(177, 522);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(115, 22);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Deconnexion";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
             // FrmCommandeValidation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(903, 623);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.cboFiltre);
             this.Controls.Add(this.btnAttente);
             this.Controls.Add(this.lblValide);
@@ -274,5 +287,6 @@ namespace gescom22
         private System.Windows.Forms.Label lblValide;
         private System.Windows.Forms.Button btnAttente;
         private System.Windows.Forms.ComboBox cboFiltre;
+        private System.Windows.Forms.Label label4;
     }
 }

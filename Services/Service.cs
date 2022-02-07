@@ -21,13 +21,13 @@ namespace gescom22.Services
         public void addCommande(Commande cmde, List<DetailsCommandeDTO> details)
         {
             data.Commande.Add(cmde);
-            foreach(DetailsCommandeDTO detail in details)
+            foreach (DetailsCommandeDTO detail in details)
             {
                 DetailsCommande de = new DetailsCommande()
                 {
-                    Quantite=detail.Quantite,
-                    Produit=findProduitById(detail.Produit.Id),
-                    Commande=cmde
+                    Quantite = detail.Quantite,
+                    Produit = findProduitById(detail.Produit.Id),
+                    Commande = cmde
                 };
                 data.DetailCommande.Add(de);
             }
@@ -35,18 +35,18 @@ namespace gescom22.Services
 
         }
 
-        public int addLivraison(Livraison livraison,int idCom,int idLiv)
+        public int addLivraison(Livraison livraison, int idCom, int idLiv)
         {
             Livreur liv = (Livreur)data.User.Find(idLiv);
             Commande com = data.Commande.Find(idCom);
             Livraison livr = new Livraison()
             {
-                Date=livraison.Date,
-                Etat="EN COURS",
-                Livreur=liv,
-                Commande=com
+                Date = livraison.Date,
+                Etat = "EN COURS",
+                Livreur = liv,
+                Commande = com
             };
-            
+
             data.Livraison.Add(livr);
             return data.SaveChanges();
         }
@@ -78,7 +78,7 @@ namespace gescom22.Services
             }
         }
 
-        public int deleteProduit(int  idProduit)
+        public int deleteProduit(int idProduit)
         {
             Produit prodDel = data.Produit.Where(prod => prod.Id == idProduit).FirstOrDefault();
             data.Produit.Remove(prodDel);
@@ -100,6 +100,11 @@ namespace gescom22.Services
             return (Client)data.User.Where(u => u.Id == id).FirstOrDefault();
         }
 
+        public List<Livraison> findLivraisonsByLivreurAndEtat(int idUser, string etat)
+        {
+            return data.Livraison.Where(l => l.Livreur.Id == idUser & l.Etat == etat).ToList();
+        }
+
         public Produit findProduitById(int id)
         {
             return data.Produit.Where(p => p.Id == id).FirstOrDefault();
@@ -107,7 +112,7 @@ namespace gescom22.Services
 
         public User findUserByLoginPassword(string login, string password)
         {
-            return data.User.Where(s=>s.Login==login & s.Password==password).FirstOrDefault();
+            return data.User.Where(s => s.Login == login & s.Password == password).FirstOrDefault();
         }
 
         public List<Categorie> showAllCategories()
@@ -126,14 +131,21 @@ namespace gescom22.Services
             return data.DetailCommande.Where(d => d.Commande.Id == idCat).ToList();
         }
 
-        public int updateCommandeStatus(int idCom,string status)
+        public int updateCommandeStatus(int idCom, string status)
         {
             Commande commande = data.Commande.Find(idCom);
             commande.Etat = status;
             return data.SaveChanges();
         }
 
-        public int updateProduit(int idProd,int stockM)
+        public int updateLivraisonStatus(int idLiv, string etat)
+        {
+            Livraison liv = data.Livraison.Find(idLiv);
+            liv.Etat = etat;
+            return data.SaveChanges();
+        }
+
+        public int updateProduit(int idProd, int stockM)
         {
             Produit pro = data.Produit.Find(idProd);
             pro.Stock = stockM;

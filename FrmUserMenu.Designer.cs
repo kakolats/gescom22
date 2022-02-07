@@ -125,6 +125,7 @@ namespace gescom22
             this.label3.Size = new System.Drawing.Size(101, 17);
             this.label3.TabIndex = 2;
             this.label3.Text = "Deconnexion";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // panel2
             // 
@@ -169,6 +170,7 @@ namespace gescom22
             this.IsMdiContainer = true;
             this.Name = "FrmUserMenu";
             this.Text = "FrmUserMenu";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmUserMenu_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

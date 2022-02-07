@@ -40,5 +40,6 @@ namespace gescom22.Services
         //Gerer Livraison
         int addLivraison(Livraison livraison,int idCom,int idLiv);
         List<Livraison> findLivraisonsByLivreurAndEtat(int idUser,string etat);
+        int updateLivraisonStatus(int idLiv,string etat);
     }
 }

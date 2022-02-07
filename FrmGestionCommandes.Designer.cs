@@ -157,7 +157,7 @@ namespace gescom22
             // btnBoot
             // 
             this.btnBoot.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBoot.Location = new System.Drawing.Point(97, 484);
+            this.btnBoot.Location = new System.Drawing.Point(198, 484);
             this.btnBoot.Name = "btnBoot";
             this.btnBoot.Size = new System.Drawing.Size(96, 29);
             this.btnBoot.TabIndex = 13;

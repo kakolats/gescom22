@@ -31,7 +31,7 @@ namespace gescom22
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmGestionCommandes());
+            Application.Run(new FrmConnexion());
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using gescom22.Services;
+﻿using gescom22.fabrique;
+using gescom22.Services;
 using gescom22.utils;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace gescom22
             loadTableViewCommandes();
         }
 
-        private void loadTableViewCommandes(string etat="DEMANDE")
+        private void loadTableViewCommandes(string etat="EN ATTENTE")
         {
             dtgvCommandes.AutoGenerateColumns = false;
             dtgvCommandes.DataSource = service.findAllCommandesByEtat(etat);
@@ -147,6 +148,13 @@ namespace gescom22
             loadTableViewDetails(0);
             cmdeSelected = null;
             loadTableViewCommandes("EN ATTENTE");
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            FrmConnexion frm = new FrmConnexion();
+            frm.Show();
+            this.Hide();
         }
     }
 }

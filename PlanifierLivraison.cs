@@ -1,4 +1,5 @@
-﻿using gescom22.Services;
+﻿using gescom22.fabrique;
+using gescom22.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

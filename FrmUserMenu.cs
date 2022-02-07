@@ -68,5 +68,12 @@ namespace gescom22
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            FrmConnexion frm = new FrmConnexion();
+            frm.Show();
+            this.Hide();
+        }
     }
 }

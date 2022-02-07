@@ -90,6 +90,7 @@ namespace gescom22
             this.lblDeconnexion.Size = new System.Drawing.Size(101, 17);
             this.lblDeconnexion.TabIndex = 3;
             this.lblDeconnexion.Text = "Deconnexion";
+            this.lblDeconnexion.Click += new System.EventHandler(this.lblDeconnexion_Click);
             // 
             // panel2
             // 

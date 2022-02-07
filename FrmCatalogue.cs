@@ -1,4 +1,5 @@
-﻿using gescom22.Services;
+﻿using gescom22.fabrique;
+using gescom22.Services;
 using gescom22.utils;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace gescom22
     public partial class FrmCatalogue : Form
     {
         private int i = 0;
-        Service service = new Service();
+        private Service service = new Service();
         public FrmCatalogue()
         {
             InitializeComponent();

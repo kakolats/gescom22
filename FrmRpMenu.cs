@@ -52,5 +52,12 @@ namespace gescom22
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void lblDeconnexion_Click(object sender, EventArgs e)
+        {
+            FrmConnexion frm = new FrmConnexion();
+            frm.Show();
+            this.Hide();
+        }
     }
 }

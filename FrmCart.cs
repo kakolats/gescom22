@@ -1,4 +1,5 @@
 ﻿using gescom22.dto;
+using gescom22.fabrique;
 using gescom22.Services;
 using gescom22.utils;
 using System;
@@ -15,7 +16,8 @@ namespace gescom22
 {
     public partial class FrmCart : Form
     {
-        Service service = new Service();
+        private Service service = new Service();
+
         List<Produit> produits;
         int i=0;
         double montant = 0;

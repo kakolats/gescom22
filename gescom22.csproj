@@ -76,10 +76,30 @@
     <Compile Include="CtrlProduct.Designer.cs">
       <DependentUpon>CtrlProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="dao\CategorieDao.cs" />
+    <Compile Include="dao\ClientDao.cs" />
+    <Compile Include="dao\CommandeDao.cs" />
+    <Compile Include="dao\DetailsCommandeDao.cs" />
+    <Compile Include="dao\ICategorieDao.cs" />
+    <Compile Include="dao\IClientDao.cs" />
+    <Compile Include="dao\ICommandeDao.cs" />
+    <Compile Include="dao\IDao.cs" />
+    <Compile Include="dao\IDetailsCommande.cs" />
+    <Compile Include="dao\ILivraisonDao.cs" />
+    <Compile Include="dao\ILivreurDao.cs" />
+    <Compile Include="dao\IPaiementDao.cs" />
+    <Compile Include="dao\IProduitDao.cs" />
+    <Compile Include="dao\IUserDao.cs" />
+    <Compile Include="dao\LivraisonDao.cs" />
+    <Compile Include="dao\LivreurDao.cs" />
+    <Compile Include="dao\PaiementDao.cs" />
+    <Compile Include="dao\ProduitDao.cs" />
+    <Compile Include="dao\UserDao.cs" />
     <Compile Include="DetailsCommande.cs">
       <DependentUpon>GesData.tt</DependentUpon>
     </Compile>
     <Compile Include="dto\DetailsCommandeDTO.cs" />
+    <Compile Include="fabrique\Fabrique.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
